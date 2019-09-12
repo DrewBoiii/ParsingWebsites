@@ -1,8 +1,10 @@
 package task.drew.parsingwebsite.persistence.model;
 
 import lombok.Data;
+import task.drew.parsingwebsite.constraint.anotation.ValidUrl;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.Map;
 
 @Data
@@ -13,6 +15,8 @@ public class WebSite {
     @GeneratedValue(strategy = GenerationType.AUTO)
     public Long id;
 
+    @ValidUrl
+    @NotBlank
     public String targetUrl;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
