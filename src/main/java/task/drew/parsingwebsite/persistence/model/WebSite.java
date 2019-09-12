@@ -2,10 +2,7 @@ package task.drew.parsingwebsite.persistence.model;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Map;
 
 @Data
@@ -18,8 +15,11 @@ public class WebSite {
 
     public String targetUrl;
 
-    public Map<String, String> uniqueContent;
-
-
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "websites_pairs",
+            joinColumns = @JoinColumn(name = "website_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "pair_id", referencedColumnName = "id"))
+    public Map<String, Pair> uniqueContent;
 
 }

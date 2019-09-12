@@ -1,10 +1,9 @@
 package task.drew.parsingwebsite.service;
 
-import org.springframework.stereotype.Service;
+import task.drew.parsingwebsite.persistence.model.WebSite;
 
-@Service
 public interface WebSiteService {
 
-
+    void save(WebSite webSite);
 
 }

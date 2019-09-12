@@ -38,14 +38,15 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-8">
-                <form action="#" method="post">
+                <form action="#" th:action="@{/parser/submit}" th:object="${website}" method="post">
 
                     <div class="form-group">
                         <label for="targeturl">Target URL</label>
-                        <input type="text" class="form-control" id="targeturl">
+                        <input type="text" class="form-control" id="targeturl" th:field="*{targetUrl}">
                     </div>
 
                     <button type="submit" class="btn btn-success">Parse</button>
+
                 </form>
             </div>
         </div>
