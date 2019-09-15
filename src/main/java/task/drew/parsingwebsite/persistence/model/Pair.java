@@ -2,7 +2,10 @@ package task.drew.parsingwebsite.persistence.model;
 
 import lombok.Data;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Data
 @Entity
@@ -10,10 +13,16 @@ public class Pair {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    public Long id;
+    private Long id;
 
-    public String value;
+    private String value;
 
-    public Long quantity;
+    private Long quantity;
 
+    public Pair(){}
+
+    public Pair(String value, Long quantity){
+        this.value = value;
+        this.quantity = quantity;
+    }
 }

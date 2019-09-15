@@ -1,7 +1,9 @@
 package task.drew.parsingwebsite.persistence.model;
 
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 import task.drew.parsingwebsite.constraint.anotation.ValidUrl;
+import task.drew.parsingwebsite.util.Parser;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -13,17 +15,24 @@ public class WebSite {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    public Long id;
+    private Long id;
 
     @ValidUrl
     @NotBlank
-    public String targetUrl;
+    private String targetUrl;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "websites_pairs",
             joinColumns = @JoinColumn(name = "website_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "pair_id", referencedColumnName = "id"))
-    public Map<String, Pair> uniqueContent;
+//    @MapKey(name = "value")
+    private Map<String, Pair> uniqueContent;
+
+    public void merge(Map<String, Pair> content){
+        for (String word : content.keySet()) {
+            Parser.addIfNotExists(uniqueContent, word);
+        }
+    }
 
 }

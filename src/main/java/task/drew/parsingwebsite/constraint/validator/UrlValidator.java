@@ -27,6 +27,7 @@ public class UrlValidator implements ConstraintValidator<ValidUrl, String> {
     private boolean urlValid(String url){
         Document doc;
 
+        // TODO: 13.09.2019 fix incorrect url bug
         try {
             doc = Jsoup.connect(url).get();
         } catch (IOException e) {
