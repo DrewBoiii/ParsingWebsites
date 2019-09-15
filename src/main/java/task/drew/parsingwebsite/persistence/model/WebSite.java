@@ -11,7 +11,7 @@ import java.util.Map;
 
 @Data
 @Entity
-public class WebSite {
+public class WebSite implements Comparable<WebSite> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -35,4 +35,8 @@ public class WebSite {
         }
     }
 
+    @Override
+    public int compareTo(WebSite o) {
+        return this.id.compareTo(o.id);
+    }
 }

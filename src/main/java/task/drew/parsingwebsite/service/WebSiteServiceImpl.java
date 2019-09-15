@@ -10,6 +10,8 @@ import task.drew.parsingwebsite.util.HtmlTag;
 import task.drew.parsingwebsite.util.Parser;
 
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Slf4j
 @Service
@@ -20,6 +22,14 @@ public class WebSiteServiceImpl implements WebSiteService {
     @Autowired
     public WebSiteServiceImpl(WebSiteRepository webSiteRepository) {
         this.webSiteRepository = webSiteRepository;
+    }
+
+    @Override
+    public List<WebSite> getWebSites() {
+        return StreamSupport
+                .stream(Spliterators.spliteratorUnknownSize(webSiteRepository.findAll().iterator(), Spliterator.NONNULL), false)
+                .sorted(Comparator.reverseOrder())
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -39,7 +49,9 @@ public class WebSiteServiceImpl implements WebSiteService {
         Map<String, Pair> uniqueContent;
 
         for (HtmlTag tag : HtmlTag.values()) {
+
             uniqueContent = Parser.parseTag(webSite.getTargetUrl(), tag.getName());
+
             webSite.merge(uniqueContent);
         }
     }
