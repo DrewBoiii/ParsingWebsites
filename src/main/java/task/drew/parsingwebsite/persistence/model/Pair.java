@@ -9,7 +9,7 @@ import javax.persistence.Id;
 
 @Data
 @Entity
-public class Pair {
+public class Pair implements Comparable<Pair> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,5 +24,10 @@ public class Pair {
     public Pair(String value, Long quantity){
         this.value = value;
         this.quantity = quantity;
+    }
+
+    @Override
+    public int compareTo(Pair o) {
+        return this.value.compareTo(o.value);
     }
 }

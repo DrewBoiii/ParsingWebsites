@@ -41,7 +41,7 @@ public class ParseController {
 
         webSiteService.save(webSite);
 
-        return "redirect:../";
+        return "redirect:/details";
     }
 
 }

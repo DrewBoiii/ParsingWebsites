@@ -9,8 +9,7 @@ import task.drew.parsingwebsite.persistence.model.WebSite;
 import task.drew.parsingwebsite.util.HtmlTag;
 import task.drew.parsingwebsite.util.Parser;
 
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 @Slf4j
 @Service

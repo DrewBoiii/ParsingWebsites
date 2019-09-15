@@ -38,7 +38,12 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <p>parsing details</p>
+                <h3>Parsing details</h3>
+                <div th:each="pair : ${pairs}">
+                    <h5 th:text="${pair.value}"></h5>
+                    <p th:text="${pair.quantity}"></p>
+                    <hr/>
+                </div>
             </div>
         </div>
     </div>
