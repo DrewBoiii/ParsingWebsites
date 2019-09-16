@@ -1,7 +1,8 @@
 package task.drew.parsingwebsite.persistence.model;
 
 import lombok.Data;
-import lombok.extern.slf4j.Slf4j;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import task.drew.parsingwebsite.constraint.anotation.ValidUrl;
 import task.drew.parsingwebsite.util.Parser;
 
@@ -11,6 +12,8 @@ import java.util.Map;
 
 @Data
 @Entity
+@ToString
+@EqualsAndHashCode
 public class WebSite implements Comparable<WebSite> {
 
     @Id
@@ -27,6 +30,7 @@ public class WebSite implements Comparable<WebSite> {
             joinColumns = @JoinColumn(name = "website_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "pair_id", referencedColumnName = "id"))
 //    @MapKey(name = "value")
+    // TODO: 16.09.2019 find out how to deal with persisting maps more detailed
     private Map<String, Pair> uniqueContent;
 
     public void merge(Map<String, Pair> content){
