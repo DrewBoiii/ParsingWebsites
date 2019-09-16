@@ -1,18 +1,17 @@
 package task.drew.parsingwebsite.constraint.validator;
 
 import lombok.extern.slf4j.Slf4j;
-import org.jsoup.Connection;
-import org.jsoup.HttpStatusException;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
 import task.drew.parsingwebsite.constraint.anotation.ValidUrl;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
-import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Slf4j
 public class UrlValidator implements ConstraintValidator<ValidUrl, String> {
+
+    private static final String URL_PATTERN = "^(http|https)://[-a-zA-Z0-9+&@#/%?=~_|,!:.;]*[-a-zA-Z0-9+@#/%=&_|]";
 
     @Override
     public void initialize(ValidUrl constraintAnnotation) {
@@ -25,16 +24,9 @@ public class UrlValidator implements ConstraintValidator<ValidUrl, String> {
     }
 
     private boolean urlValid(String url){
-        Document doc;
+        Pattern pattern = Pattern.compile(URL_PATTERN);
+        Matcher matcher = pattern.matcher(url);
 
-        // TODO: 13.09.2019 fix incorrect url bug
-        try {
-            doc = Jsoup.connect(url).get();
-        } catch (IOException e) {
-            e.printStackTrace();
-            doc = null;
-        }
-
-        return doc != null;
+        return matcher.matches();
     }
 }
