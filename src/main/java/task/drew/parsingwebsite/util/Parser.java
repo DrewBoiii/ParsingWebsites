@@ -15,8 +15,8 @@ import java.util.TreeMap;
 public class Parser {
 
     public static Map<String, Pair> parseTag(String url, String tag){
-        Map<String, Pair> treeMap = new TreeMap<>();
-        Map<String, Pair> subTreeMap;
+        Map<String, Pair> tagsMap = new TreeMap<>();
+        Map<String, Pair> singleTagMap;
         try {
 
             Document document = Jsoup.connect(url).get();
@@ -25,21 +25,22 @@ public class Parser {
 
             for (Element element : tags) {
 
-                subTreeMap = parseString(element.text());
+                singleTagMap = parseString(element.text());
 
-                for (String word : subTreeMap.keySet()) {
-                    addIfNotExists(treeMap, word);
+                for (String word : singleTagMap.keySet()) {
+                    addIfNotExists(tagsMap, word);
                 }
 
             }
 
         } catch (IOException e) {
+            log.error(e.getMessage());
             e.printStackTrace();
         }
 
-        log.info("Tag map is " + treeMap.toString());
+        log.info("Tag map is " + tagsMap.toString());
 
-        return treeMap;
+        return tagsMap;
     }
 
     public static void addIfNotExists(Map<String, Pair> treeMap, String word) {
