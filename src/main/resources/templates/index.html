@@ -5,6 +5,25 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <title>Parsing WebSite</title>
+    <style>
+        body {
+            font-size: 20px;
+            font-family: "-apple-system",
+            BlinkMacSystemFont,
+            Arial,
+            sans-serif;
+        }
+        a {
+            color: #445555;
+        }
+        a:hover{
+            color: #777777;
+        }
+
+        footer div {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
 
@@ -36,9 +55,16 @@
 
 <div class="content">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-12">
-                <p>some description via how to use this webapp</p>
+        <div class="justify-content-center">
+            <div class="col-10">
+                <article>
+                    <h3>Description</h3>
+                    <p>The purpose of this web application is getting information form different websites to examine the content.</p>
+                    <p>So go to the <a th:href="@{/parser}">parser page</a>, tap the url of a target website and get the info.</p>
+                    <p>Also you can see the parsing details <a th:href="@{/details}">here</a>.
+                        All extraction data persists to database for current session.</p>
+                </article>
+
             </div>
         </div>
     </div>
