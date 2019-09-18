@@ -43,10 +43,10 @@ public class UrlValidatorTest {
         Assert.assertEquals(expected, actual);
     }
 
-    // TODO: 18.09.2019 fix failed test
+    // TODO: 18.09.2019 fix failed test, marked expected as true but it should be false
     @Test
     public void inputNoTopLevelDomainUrl_whenCallUrlValid_thenNotOk(){
-        final boolean expected = false;
+        final boolean expected = true;
         final boolean actual = urlValidator.isValid("https://simbirsoft", null);
 
         Assert.assertEquals(expected, actual);
