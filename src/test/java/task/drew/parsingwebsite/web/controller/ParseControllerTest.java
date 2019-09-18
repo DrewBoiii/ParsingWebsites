@@ -39,7 +39,7 @@ public class ParseControllerTest {
     }
 
     @Test
-    public void validationCorrectUrl_whenPostWebSiteForm_statusOk() throws Exception {
+    public void validationCorrectUrl_whenPostWebSiteForm_statusIsFound() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.post("/parser/submit")
                 .accept(MediaType.TEXT_HTML).param("targetUrl", "https://simbirsoft.com"))
                 .andExpect(MockMvcResultMatchers.status().isFound())
