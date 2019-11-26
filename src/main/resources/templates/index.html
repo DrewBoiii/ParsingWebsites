@@ -27,54 +27,54 @@
 </head>
 <body>
 
-<header class="main-head navbar navbar-expand-sm sticky-top">
-    <div class="container-fluid">
-        <div class="collapse navbar-collapse">
-            <h1>Html parser 1.0</h1>
+    <header class="main-head navbar navbar-expand-sm sticky-top">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse">
+                <h1>Html parser 1.0</h1>
+            </div>
         </div>
-    </div>
-</header>
+    </header>
 
-<nav class="navbar navbar-expand-sm sticky-top">
-    <div class="container-fluid">
-        <div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav col-md-6">
-                <li class="nav-item">
-                    <a class="nav-link" href="/home">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/parser">Parser</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/details">Details</a>
-                </li>
-            </ul>
+    <nav class="navbar navbar-expand-sm sticky-top gray">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav col-md-6">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/parser">Parser</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/details">Details</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
-<div class="content">
-    <div class="container-fluid">
-        <div class="justify-content-center">
-            <div class="col-10">
-                <article>
-                    <h3>Description</h3>
-                    <p>The purpose of this web application is getting information form different websites to examine the content.</p>
-                    <p>So go to the <a th:href="@{/parser}">parser page</a>, tap the url of a target website and get the info.</p>
-                    <p>Also you can see the parsing details <a th:href="@{/details}">here</a>.
-                        All extraction data persists to database for current session.</p>
-                </article>
+    <div class="content">
+        <div class="container-fluid">
+            <div class="justify-content-center">
+                <div class="col-10">
+                    <article>
+                        <h3>Description</h3>
+                        <p>The purpose of this web application is getting information form different websites to examine the content.</p>
+                        <p>So go to the <a th:href="@{/parser}">parser page</a>, tap the url of a target website and get the info.</p>
+                        <p>Also you can see the parsing details <a th:href="@{/details}">here</a>.
+                            All extraction data persists to database for current session.</p>
+                    </article>
 
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<footer class="main-foot">
-    <div class="container-fluid">
-        2019 © Html Parser <br>
-    </div>
-</footer>
+    <footer class="main-foot">
+        <div class="container-fluid">
+            2019 © Html Parser <br>
+        </div>
+    </footer>
 
 </body>
 </html>

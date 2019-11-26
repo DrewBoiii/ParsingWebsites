@@ -27,58 +27,101 @@
 </head>
 <body>
 
-<header class="main-head navbar navbar-expand-sm sticky-top">
-    <div class="container-fluid">
-        <div class="collapse navbar-collapse">
-            <h1>Html parser 1.0</h1>
+    <header class="main-head navbar navbar-expand-sm sticky-top">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse">
+                <h1>Html parser 1.0</h1>
+            </div>
         </div>
-    </div>
-</header>
+    </header>
 
-<nav class="navbar navbar-expand-sm sticky-top">
-    <div class="container-fluid">
-        <div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav col-md-6">
-                <li class="nav-item">
-                    <a class="nav-link" href="/home">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/parser">Parser</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/details">Details</a>
-                </li>
-            </ul>
+    <nav class="navbar navbar-expand-sm sticky-top grey">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav col-md-6">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/parser">Parser</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/details">Details</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
-<div class="content">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12">
-                <h3>Parsing details</h3>
-                <div th:if="${websites.isEmpty()}">
-                    <h5>You have no websites details yet :(</h5>
-                </div>
-                <div th:each="website : ${websites}">
-                    <h5 th:text="${website.targetUrl}"></h5>
-                    <div th:each="content : ${website.uniqueContent.values()}">
-                        <h6 th:text="${content.value}"></h6>
-                        <p th:text="${content.quantity}"></p>
-                        <hr/>
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <h3>Parsing details</h3>
+                    <div th:if="${websites.isEmpty()}">
+                        <h5>You have no websites details yet :(</h5>
+                    </div>
+                    <div th:each="website : ${websites}">
+                        <h4 th:text="${website.targetUrl}"></h4>
+                        <div th:each="content : ${website.uniqueContent.values()}">
+                            <h6 th:text="${content.value}"></h6>
+                            <p th:text="${content.quantity}"></p>
+                            <hr/>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<footer class="main-foot">
-    <div class="container-fluid">
-        2019 © Html Parser <br>
-    </div>
-</footer>
+<!--    <div>-->
+<!--        <ul class="pagination">-->
+<!--            <th:block th:if="${active_page != 0}">-->
+<!--                <li th:if="${website_criteria.name != null}">-->
+<!--                    <a th:href="@{|/home?brand=${car_criteria.brand}&model=${car_criteria.model}&page=${active_page - 1}&sort=${car_criteria.sort}|}">-->
+<!--                        <i class="material-icons">chevron_left</i>-->
+<!--                    </a>-->
+<!--                </li>-->
+<!--                <li th:unless="${car_criteria.brand != null && car_criteria.model != null}">-->
+<!--                    <a th:href="@{|/home?page=${active_page - 1}&sort=${car_criteria.sort}|}">-->
+<!--                        <i class="material-icons">chevron_left</i>-->
+<!--                    </a>-->
+<!--                </li>-->
+<!--            </th:block>-->
+<!--            <th:block th:each="page_number, iter : ${page_indexes}" th:with="-->
+<!--                              left_terminator=${active_page > view_range/2 + 1 ? (active_page > page_indexes.size() - view_range/2 ? page_indexes.size() - view_range  : active_page - (view_range/2 + 1) ) : 0},-->
+<!--                              right_terminator=${left_terminator + view_range + 1 }">-->
+<!--                <th:block th:if="${ left_terminator < iter.count && iter.count < right_terminator}">-->
+<!--                    <li th:classappend="${active_page == page_number - 1} ? active : waves-effect ">-->
+<!--                        <a th:if="${car_criteria.brand != null && car_criteria.model != null}"-->
+<!--                           th:href="@{|/home?brand=${car_criteria.brand}&model=${car_criteria.model}&page=${page_number - 1}&sort=${car_criteria.sort}|}"-->
+<!--                           th:text="${page_number}"></a>-->
+<!--                        <a th:unless="${car_criteria.brand != null && car_criteria.model != null}"-->
+<!--                           th:href="@{|/home?page=${page_number - 1}&sort=${car_criteria.sort}|}"-->
+<!--                           th:text="${page_number}"></a>-->
+<!--                    </li>-->
+<!--                </th:block>-->
+<!--            </th:block>-->
+<!--            <th:block th:if="${active_page < page_indexes.size() - 1}">-->
+<!--                <li th:if="${car_criteria.brand != null && car_criteria.model != null}">-->
+<!--                    <a th:href="@{|/home?brand=${car_criteria.brand}&model=${car_criteria.model}&page=${active_page + 1}&sort=${car_criteria.sort}|}">-->
+<!--                        <i class="material-icons">chevron_right</i>-->
+<!--                    </a>-->
+<!--                </li>-->
+<!--                <li th:unless="${car_criteria.brand != null && car_criteria.model != null}">-->
+<!--                    <a th:href="@{|/home?page=${active_page + 1}&sort=${car_criteria.sort}|}">-->
+<!--                        <i class="material-icons">chevron_right</i>-->
+<!--                    </a>-->
+<!--                </li>-->
+<!--            </th:block>-->
+<!--        </ul>-->
+<!--    </div>-->
+
+    <footer class="main-foot">
+        <div class="container-fluid">
+            2019 © Html Parser <br>
+        </div>
+    </footer>
 
 </body>
 </html>
