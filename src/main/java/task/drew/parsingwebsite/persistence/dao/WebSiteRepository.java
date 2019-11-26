@@ -1,11 +1,10 @@
 package task.drew.parsingwebsite.persistence.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import task.drew.parsingwebsite.persistence.model.WebSite;
 
-import java.util.List;
-
-public interface WebSiteRepository extends JpaRepository<WebSite, Long> {
+public interface WebSiteRepository extends JpaRepository<WebSite, Long>, JpaSpecificationExecutor<WebSite> {
 
 
 

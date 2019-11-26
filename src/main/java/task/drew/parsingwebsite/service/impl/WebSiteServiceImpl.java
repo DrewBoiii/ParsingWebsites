@@ -1,14 +1,18 @@
-package task.drew.parsingwebsite.service;
+package task.drew.parsingwebsite.service.impl;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import task.drew.parsingwebsite.persistence.dao.WebSiteRepository;
 import task.drew.parsingwebsite.persistence.model.Pair;
 import task.drew.parsingwebsite.persistence.model.WebSite;
+import task.drew.parsingwebsite.service.WebSiteService;
 import task.drew.parsingwebsite.util.HtmlTag;
 import task.drew.parsingwebsite.util.Parser;
 
+import java.awt.print.Pageable;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
@@ -54,5 +58,10 @@ public class WebSiteServiceImpl implements WebSiteService {
 
             webSite.merge(uniqueContent);
         }
+    }
+
+    @Override
+    public Page<WebSite> getWebSitesBySpecification(Specification<WebSite> webSiteSpecification, Pageable pageable) {
+        return null;
     }
 }

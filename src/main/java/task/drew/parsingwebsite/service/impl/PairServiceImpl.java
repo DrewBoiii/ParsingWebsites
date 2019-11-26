@@ -1,9 +1,10 @@
-package task.drew.parsingwebsite.service;
+package task.drew.parsingwebsite.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import task.drew.parsingwebsite.persistence.dao.PairRepository;
 import task.drew.parsingwebsite.persistence.model.Pair;
+import task.drew.parsingwebsite.service.PairService;
 
 import java.util.Comparator;
 import java.util.List;
